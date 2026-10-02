@@ -8,6 +8,12 @@ AudioCache/
 # Lockfile
 _OpenInEditor.lock
 
+# Danger
+.env
+.env.template
+.env/
+env/
+
 # User settings
 Game.agf.user
 *.crm.user
