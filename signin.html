@@ -1,4 +1,37 @@
-<textarea id="Username" placeholder="John Doe"></textarea>
-<textarea id="Password" placeholder="Your password..."></textarea>
-<textarea id="Email" placeholder="Your email..."></textarea>
-  <a href="https://mrmichaelchapo-del.github.io/Jackmo/profile.html">Sign In</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jackmo 👨 Sign In 👨</title>
+<head>
+<body>
+<form id="loginForm">
+  <input id="Username" name="username" type="text" placeholder="John Doe">
+  <input id="Password" name="password" type="password" placeholder="Your password...">
+  <input id="Email" name="email" type="email" placeholder="Your email...">
+  <button type="submit">Sign In</button>
+</form>
+
+<script>
+const dbRequest = indexedDB.open("UserDB", 1);
+let db;
+
+dbRequest.onupgradeneeded = e => {
+  db = e.target.result;
+  db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
+};
+
+dbRequest.onsuccess = e => {
+  db = e.target.result;
+};
+
+document.getElementById("loginForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const username = document.getElementById("Username").value;
+  const tx = db.transaction("users", "readwrite");
+  const store = tx.objectStore("users");
+  store.add({ username });
+});
+</script>
+</body>
+</html>
