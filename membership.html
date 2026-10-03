@@ -7,6 +7,16 @@
     .mem {
   background: linear-gradient(to right, blue, lightgreen);
 }
+
+.seperator {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;                  /* The width of the separator line */
+  background-color: #ddd;    /* The color of the separator line */
+}
+.seperator-text {
+  background-color: #fff;    /* Hides container color except in gaps */
+}
 </style>
 </head>
 <body>
@@ -14,7 +24,7 @@
 <div id="membership"><img src="sparkle.jpeg">It helps a lot to become a member! Become a member today by clicking the link.</div>
 
 <h4>Link to Membership ⬇️</h4>
-<div id="seperator"></div>
+<div id="seperator"><div id="seperator-text"></div></div>
 <button id="mem"><a href="https://ko-fi.com/Jackmoapp">Membership</a></button>
 </body>
 </html>
